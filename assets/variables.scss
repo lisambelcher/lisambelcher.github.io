@@ -1,0 +1,10 @@
+// Ref: https://github.com/nuxt-community/vuetify-module#customvariables
+//
+// The variables you want to modify
+// $font-size-root: 20px;
+//
+// See: https://vuetifyjs.com/en/customization/sass-variables
+$card-text-font-size: 1.125rem;
+$material-light: (
+  'background': radial-gradient(70% 70% at 50% 100%, rgb(232, 232, 232) 0px, rgb(250, 250, 250) 100%)
+);

@@ -1,131 +1,95 @@
-[![Coverage Status](https://coveralls.io/repos/Alheimsins/b5-johnson-120-ipip-neo-pi-r/badge.svg?branch=main&service=github)](https://coveralls.io/github/Alheimsins/b5-johnson-120-ipip-neo-pi-r?branch=main)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+# bigfive-web
 
-# b5-johnson-120-ipip-neo-pi-r
+<img src="logo.jpeg?raw=true" width="160" height="160" alt="Bigfive logo" align="right">
 
-Module for returning Big Five [Johnson 120 IPIP-NEO-PI-R](https://ipip.ori.org/30facetneo-pi-ritems.htm) items
+Prod: https://bigfive-test.com
+
+Website for five factor model of personality based on work from [IPIP-NEO-PI](https://github.com/kholia/IPIP-NEO-PI).
+
+Tests and evaluation is gathered from [ipip.ori.org](http://ipip.ori.org).
+
+See it live @ [bigfive-test.com](https://bigfive-test.com)
+
+The frontend is written in [nodejs](https://nodejs.org) using the
+[Nuxt.js](https://nuxtjs.org/) framework.
+
+## Preview
+
+![Preview](https://media4.giphy.com/media/MWsRzFD3hrsXi9tKzu/giphy.gif)
 
 ## Installation
 
+Download and install [nodejs](https://nodejs.org),
+[git](https://git-scm.com/downloads) and [vercel-cli](https://vercel.com/download)
+
+Make sure nodejs version is equal or greater than 12
+
+The results are saved to a [mongodb](https://www.mongodb.com/) database, so for a full test you either need a running mongodb or an instance at [mlab](https://mlab.com/)
+
+## Development
+
+add .env file
+
 ```
-$ npm i @alheimsins/b5-johnson-120-ipip-neo-pi-r
+MONGODB_URI=mongodb://<your-mongodb-url>
+MONGODB_COLLECTION=results
+BASE_URL=http://localhost:3000
 ```
+Run the setup script to install all dependencies
 
-## Usage
-
-```JavaScript
-const { getItems, getInfo, getChoices, getQuestions } = require('@alheimsins/b5-johnson-120-ipip-neo-pi-r')
-
-console.log(getInfo()) // returns test info
-
-console.log(getChoices()) // returns choices in English
-
-console.log(getQuestions()) // returns questions in English
-
-console.log(getItems()) // returns English
-
-console.log(getItems('no')) // returns Norwegian
-
-console.log(getItems('en', true)) // returns English shuffeled
 ```
-
-returns an [array with questions and choices](examples/items-en.json)
-
-```JavaScript
-[
-   {
-       "id": "43c98ce8-a07a-4dc2-80f6-c1b2a2485f06",
-       "text": "Worry about things",
-       "keyed": "plus",
-       "domain": "N",
-       "facet": 1,
-       "num": 1,
-       "choices": [
-         {
-           "text": "Very Inaccurate",
-           "score": 1,
-           "color": 1
-         },
-         {
-           "text": "Moderately Inaccurate",
-           "score": 2,
-           "color": 2
-         },
-         {
-           "text": "Neither Accurate Nor Inaccurate",
-           "score": 3,
-           "color": 3
-         },
-         {
-           "text": "Moderately Accurate",
-           "score": 4,
-           "color": 4
-         },
-         {
-           "text": "Very Accurate",
-           "score": 5,
-           "color": 5
-         }
-       ]
-    }
-]
+yarn run setup
 ```
 
-## Supported languages
+### Compiles and hot-reloads for development
+```
+yarn dev
+```
 
-| Code | Name      | Translator |
-| ---- | --------- | ---------- |
-| en   | English   |            |
-| no   | Norwegian | Eli Huseby |
-| es   | Spanish   | Eduardo Calle |
-| is   | Icelandic | Franz Jónas Arnar Arnarson and [Sigurður Kári Árnason](https://github.com/sigurdurkari) |
-| it   | Italian   | [Lorenzo Carducci](https://github.com/riourbana) |
-| nl   | Dutch     | Eus van Somerenk, Kim Dekker and Tessa Blanken |
-| se   | Swedish   | Martin Bäckström / [SwedishBarbarossa](https://github.com/SwedishBarbarossa) |
-| hr   | Croatian  | Željko Jerneić |
-| fr   | French    | Mathew Gravel |
-| et   | Estonian  | René Mõttus, Helle Pullmann, Jüri Allik, Liina Haring, Kenn Konstabel, and Anu Realo |
-| de   | German    | Heinz Streib and Manuela Wiedmaier |
-| jp   | Japanese  | Omar Karlin |
-| ur   | Urdru     | Engr. Ahmad Khan |
-| pt-br| Portuguese (brazil) | Marcelo Rigon |
-| ru   | Russian   | [Javid Askerov](https://github.com/askeroff), [Olga V](https://github.com/berrybell) |
-| zh-cn| Simplified Chinese | [Roy Jia](https://github.com/RoyJia) |
-| th   | Thai      | [Maneepailin Sriuthenchai](https://github.com/linsuri) |
-| fi   | Finnish   | [Anastasia Tapper](https://github.com/ankkukku) |
-| id   | Indonesian| [David Adi Nugroho](https://github.com/lakuapik) |
-| hi   | Hindi     | [Punit Singh](https://github.com/thepunitsingh) |
-| uk   | Ukrainian | [Elena Kunina](https://github.com/Menolas) |
-| ar   | Arabic    | Rayan Khan |
-| he   | Hebew     | Ben Perry |
-| pl   | Polish    | Maryla Królikowska |
-| ko   | Korean    | [TimeTREE](https://github.com/TimeTREE98) |
-| ro   | Romanian  | [Cătălin Topală](https://github.com/catalintopala)
+### Run your unit tests
+```
+yarn test
+```
 
+### Lint
 
-## Help wanted
+```
+yarn lint
+yarn lintfix
+```
 
-If you want to help by translating the items to other languages there are two ways to do it.
+## Deploy using [vercel-cli](https://vercel.com/download)
 
-### Translate on GitHub
-- clone the repo
-- find a language you know in [data](data)
-- duplicate the folder and rename it to the language you will translate
-- use [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language code as folder name.
-- translate the "text"-property for choices.js and questions.json
-- don't change filenames, ids or any other properties
-- add your language code to the [data/languages.json file](data/languages.json)
-- submit pull request
-- happiness :-)
+Add a secret with the mongodb connection. Example:
+```
+vc secrets add mongodb_uri mongodb://<username>:<password>@domain.com:53659/bigfive
+```
 
-### Translate from the web
-- visit [b5.translations.alheimsins.net](https://b5.translations.alheimsins.net/b5-johnson-120-ipip-neo-pi-r)
-- follow the instructions
-- happiness :-)
+Update [now.json](now.json) to match your environment.
+You will need to change the properties `scope`, `alias` and `env.BASE_URL`
+
+Update [nuxt.config.js](nuxt.config.js) to match your environment.
+You will need to change the `base_url` and `env.API_URL` and the ids for analytics and amplitude.
+
+Run to deploy
+```
+vc --confirm
+```
+
+## Deploy using [Docker](https://www.docker.com/)
+
+Todo
 
 ## Related
 
-- [bigfive-web](https://github.com/rubynor/bigfive-web) Web frontend for bigfive tests
+- [b5-johnson-120-ipip-neo-pi-r](https://github.com/Alheimsins/b5-johnson-120-ipip-neo-pi-r) - Module for returning Big Five [Johnson 120 IPIP-NEO-PI-R](http://ipip.ori.org/30FacetNEO-PI-RItems.htm) items
+- [b5-result-text](https://github.com/Alheimsins/b5-result-text) - Text for big five results score generated by b5-calculate-score
+- [bigfive-calculate-score](https://github.com/Alheimsins/bigfive-calculate-score) - Calculate score for big five tests
+- [b5-translation-web](https://github.com/Alheimsins/b5-translation-web) - Translate without using GitHub
+
+## Help wanted
+
+If you want to help by translating the items to other languages [this](https://github.com/Alheimsins/b5-johnson-120-ipip-neo-pi-r/blob/master/README.md#help-wanted) is how you do it.
 
 ## License
 
@@ -133,6 +97,4 @@ If you want to help by translating the items to other languages there are two wa
 
 ## About
 
-Created with ❤ for [Alheimsins](https://alheimsins.net)
-
-<img src="logo.jpeg" alt="Alheimsins logo" height="150px" width="150px" />
+TODO

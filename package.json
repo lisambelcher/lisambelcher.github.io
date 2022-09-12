@@ -1,62 +1,61 @@
 {
-  "name": "@alheimsins/b5-johnson-120-ipip-neo-pi-r",
-  "description": "Module for returning Big Five Johnson 120 IPIP-NEO-PI-R items",
-  "version": "6.0.5",
+  "name": "bigfive-web",
+  "version": "3.0.2",
+  "description": "Website for testing five factor model of personality",
+  "author": "Jonas Enge <jonas.enge@gmail.com> (https://github.com/maccyber)",
+  "private": true,
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
-  "author": {
-    "name": "Geir Gåsodden",
-    "email": "geir.gasodden@pythonia.no",
-    "url": "https://github.com/zrrrzzt"
-  },
-  "contributors": [
-    {
-      "name": "Jonas Enge",
-      "email": "jonas.enge@gmail.com",
-      "url": "https://github.com/maccyber"
-    }
-  ],
-  "main": "index.js",
-  "engines": {
-    "node": ">=12.22.11"
-  },
-  "files": [
-    "data/",
-    "index.js"
-  ],
-  "scripts": {
-    "test": "standard && npm audit && ava",
-    "test-offline": "standard && ava",
-    "coverage": "nyc ava",
-    "coveralls": "nyc ava && nyc report --reporter=lcov && cat coverage/lcov.info | coveralls",
-    "standard-fix": "standard --fix",
-    "refresh": "rm -rf node_modules && rm package-lock.json && npm install",
-    "prepare": "husky install"
-  },
   "keywords": [
     "bigfive",
-    "personality",
-    "items",
-    "johnson-120-ipip-neo-pi-r"
+    "personality"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Alheimsins/b5-johnson-120-ipip-neo-pi-r.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Alheimsins/b5-johnson-120-ipip-neo-pi-r/issues"
-  },
-  "homepage": "https://github.com/Alheimsins/b5-johnson-120-ipip-neo-pi-r#readme",
-  "devDependencies": {
-    "ava": "4.3.3",
-    "coveralls": "3.1.1",
-    "husky": "7.0.4",
-    "nyc": "15.1.0",
-    "standard": "16.0.4"
+  "precommit": "yarn lint",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "setup": "yarn install --frozen-lockfile && cd api && yarn install --frozen-lockfile",
+    "refresh": "rm -rf node_modules && rm yarn.lock && cd api && rm -rf node_modules && rm yarn.lock && cd .. && npm run setup",
+    "generate": "nuxt generate",
+    "test": "yarn lint && ava -v",
+    "debug-build": "nuxt build -a",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
-    "knuth-shuffle": "1.0.8"
+    "@aceforth/nuxt-optimized-images": "1.4.0",
+    "@alheimsins/b5-johnson-120-ipip-neo-pi-r": "6.0.3",
+    "@nuxt/content": "1.13.1",
+    "@nuxtjs/axios": "5.13.1",
+    "@nuxtjs/pwa": "3.3.5",
+    "@nuxtjs/sitemap": "2.4.0",
+    "amplitude-js": "7.4.2",
+    "apexcharts": "3.25.0",
+    "esm": "^3.2.25",
+    "imagemin-mozjpeg": "9.0.0",
+    "imagemin-pngquant": "9.0.1",
+    "nuxt": "2.15.2",
+    "nuxt-amplitude": "0.1.2",
+    "nuxt-i18n": "6.20.2",
+    "nuxt-webfontloader": "1.1.0",
+    "svg-country-flags": "1.2.10",
+    "vue-amplitude": "1.0.3",
+    "vue-apexcharts": "1.6.0",
+    "vue-confetti": "2.2.1",
+    "vue-template-compiler": "2.6.12"
+  },
+  "devDependencies": {
+    "@mdi/js": "5.9.55",
+    "@nuxtjs/google-analytics": "2.4.0",
+    "@nuxtjs/vuetify": "1.11.3",
+    "ava": "3.15.0",
+    "eslint": "7.20.0",
+    "eslint-config-standard": "16.0.2",
+    "eslint-loader": "4.0.2",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "4.3.1",
+    "eslint-plugin-standard": "4.1.0",
+    "eslint-plugin-vue": "7.6.0"
   }
 }
