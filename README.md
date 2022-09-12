@@ -15,7 +15,7 @@ The frontend is written in [nodejs](https://nodejs.org) using the
 
 ## Preview
 
-![Preview](https://media4.giphy.com/media/MWsRzFD3hrsXi9tKzu/giphy.gif)
+# ![Preview](https://media4.giphy.com/media/MWsRzFD3hrsXi9tKzu/giphy.gif)
 
 ## Installation
 
